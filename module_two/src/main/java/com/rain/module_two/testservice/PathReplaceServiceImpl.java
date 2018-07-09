@@ -12,7 +12,7 @@ import com.alibaba.android.arouter.facade.service.PathReplaceService;
  * Description:
  * 重写跳转的url
  */
-@Route(path = "/xxx/xxx")
+@Route(path = "/xxxx/xxx")
 public class PathReplaceServiceImpl implements PathReplaceService {
     @Override
     public String forString(String path) {

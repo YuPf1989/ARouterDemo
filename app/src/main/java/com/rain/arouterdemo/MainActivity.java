@@ -53,6 +53,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.btn_9).setOnClickListener(this);
         findViewById(R.id.btn_10).setOnClickListener(this);
         findViewById(R.id.btn_11).setOnClickListener(this);
+        findViewById(R.id.btn_12).setOnClickListener(this);
+        findViewById(R.id.btn_13).setOnClickListener(this);
     }
 
     @Override
@@ -151,6 +153,36 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             // 通过type调用服务
             case R.id.btn_11:
                 ARouter.getInstance().navigation(HelloService.class).sayHello("hello moto");
+                break;
+
+            // 跳转失败，单独降级
+            case R.id.btn_12:
+                ARouter.getInstance().build("/xxx/xxx").navigation(this, new NavCallback() {
+                    @Override
+                    public void onArrival(Postcard postcard) {
+                        Logger.e("跳转完了");
+                    }
+
+                    @Override
+                    public void onFound(Postcard postcard) {
+                        Logger.e("发现了");
+                    }
+
+                    @Override
+                    public void onLost(Postcard postcard) {
+                        Logger.e("找不到");
+                    }
+
+                    @Override
+                    public void onInterrupt(Postcard postcard) {
+                        Logger.e("拦截了");
+                    }
+                });
+                break;
+
+            // 跳转失败，全局降级
+            case R.id.btn_13:
+                ARouter.getInstance().build("/xxx/xxx").navigation();
                 break;
         }
     }

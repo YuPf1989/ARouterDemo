@@ -95,6 +95,18 @@
                 android:layout_height="wrap_content"
                 android:text="ByType调用服务" />
 
+            <Button
+                android:id="@+id/btn_12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="跳转失败，单独降级" />
+
+            <Button
+                android:id="@+id/btn_13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="跳转失败，全局降级" />
+
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
